@@ -1,6 +1,6 @@
 {
   "name": "m24media-web",
-  "description": "Build a personal website, blog, or portfolio with Astro.",
+  "description": "M24 Media company website",
   "cloudflare": {
     "label": "Astro Framework Starter",
     "products": [
@@ -15,8 +15,6 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "12.6.0",
-    "@astrojs/mdx": "4.3.0",
-    "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.4.1",
     "astro": "5.10.1",
     "typescript": "5.8.3"

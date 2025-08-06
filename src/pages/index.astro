@@ -1,7 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
@@ -10,11 +8,211 @@ import Footer from '../components/Footer.astro';
     <BaseHead title="M24 Media" description="M24 Media builds tools for modern parenthood." />
   </head>
   <body>
-    <Header />
-    <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">M24 Media</h1>
-      <p style="margin-bottom: 2rem;">Makers of <a href="https://pattr.app" target="_blank" rel="noopener">Pattr</a></p>
+    <main>
+      <div class="hero">
+        <h1>M24 Media</h1>
+        <p class="tagline">Building tools for modern parenthood</p>
+        <div class="app-section">
+          <h2>Pattr</h2>
+          <p>The Dad App.</p>
+          <a href="https://pattr.app" target="_blank" rel="noopener" class="cta-button">
+            Visit Pattr.app
+          </a>
+        </div>
+      </div>
     </main>
-    <Footer />
+    <footer>
+      <p>&copy; 2025 M24 Media. All rights reserved.</p>
+    </footer>
   </body>
 </html>
+
+<style>
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 100% 25%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 75%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: 
+      linear-gradient(135deg, #546e7a 0%, #37474f 25%, #455a64 50%, #37474f 75%, #546e7a 100%),
+      linear-gradient(45deg, rgba(84, 110, 122, 0.3) 0%, rgba(55, 71, 79, 0.3) 100%);
+    background-size: 300% 300%, 200% 200%;
+    animation: gradientShift 12s ease-in-out infinite, pulse 6s ease-in-out infinite;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(84, 110, 122, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(55, 71, 79, 0.1) 0%, transparent 50%);
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    margin: 0 0 3rem 0;
+    opacity: 0.9;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .app-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  .app-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .app-section h2 {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .app-section p {
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #37474f;
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  }
+
+  .cta-button:hover::before {
+    left: 100%;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    .app-section {
+      padding: 1.5rem;
+    }
+    
+    .app-section h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
