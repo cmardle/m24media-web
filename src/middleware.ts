@@ -16,16 +16,22 @@ export const onRequest = defineMiddleware((context, next) => {
       newPath = '/pv2' + newPath;
     }
 
-    // Create a new URL with the rewritten path
-    const newUrl = new URL(newPath + url.search, url.origin);
+    // Rewrite the URL in the context
+    const rewrittenUrl = new URL(newPath + url.search, url.origin);
 
     // Create a new request with the rewritten URL
-    const newRequest = new Request(newUrl, context.request);
+    const rewrittenRequest = new Request(rewrittenUrl.toString(), {
+      method: context.request.method,
+      headers: context.request.headers,
+      body: context.request.body,
+      redirect: context.request.redirect,
+    });
 
-    // Return the response for the rewritten request
-    return fetch(newRequest);
+    // Update the context with the rewritten request
+    context.request = rewrittenRequest;
+    context.url = rewrittenUrl;
   }
 
-  // For all other requests, proceed normally
+  // Proceed with the (potentially rewritten) request
   return next();
 });
