@@ -7,6 +7,16 @@
     "directory": "./dist",
     "binding": "ASSETS"
   },
+  "routes": [
+    {
+      "pattern": "pv2.m24media.com/*",
+      "zone_name": "m24media.com"
+    },
+    {
+      "pattern": "m24media.com/*",
+      "zone_name": "m24media.com"
+    }
+  ],
   "observability": {
     "enabled": true
   },
